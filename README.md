@@ -15,8 +15,8 @@ OK, let's pretend that supposed joke never happened and get to the point.
 ## Usage
 
 First, install an adapter:
-- Socket.io: [redux-via-socket.io](https://github.com/rstuven/redux-via-socket.io)
-- More to come...
+- Socket.IO: [redux-via-socket.io](https://github.com/rstuven/redux-via-socket.io)
+- More adapters to come...
 
 Client and server side configuration look very similar. Specifics will depend on the adapter API. We'll use the names `outViaAdapter` and `inViaAdapter` just for the example.
 
@@ -46,7 +46,7 @@ const finalCreateStore = compose(
 
 const store = finalCreateStore(rootReducer, initialState);
 
-// initialize for inconming actions
+// initialize for incoming actions
 inViaAdapter(transport, store.dispatch);
 
 ```
@@ -78,7 +78,7 @@ Default value: `false`
 #### `client` (String)
 If `broadcast` is `false`, sends the action the specified client.
 If `broadcast` is `true`, sends the action to all clients except the specified client.
-Default value: `false`
+Default value: `undefined`
 
 #### `next` (Boolean)
 If `true`, the action continues to the next middleware or the reducer in the client(s).
@@ -119,20 +119,28 @@ npm install --save redux-via
 ```
 
 ### `inClientVia(dispatch: Function, action: Object)`
+Handles incoming actions at client side.
+Arguments:
  * `dispatch`: The dispatch function from store.
  * `action`: The action object.
 
 ### `outClientVia(cross: Function): Function`
+Builds a middleware that handles outcoming actions at client side.
+Arguments:
 * `cross`: The function to cross the action out of the client boundary.
 * Returns a Redux middleware
 
 
 ### `inServerVia(dispatch: Function, action: Object, client: String)`
+Handles incoming actions at server side.
+Arguments:
 * `dispatch`: The dispatch function from store.
 * `action`: The action object.
 * `client`: The client identifier.
 
 ### `outServerVia(cross: Function): Function`
+Builds a middleware that handles outcoming actions at server side.
+Arguments:
 * `cross`: The function to cross the action out of the server boundary.
 * Returns a Redux middleware
 

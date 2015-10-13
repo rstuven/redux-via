@@ -1,6 +1,8 @@
 import * as meta from './meta';
 
 /**
+ * Handles incoming actions at server side.
+ *
  * @param {Function} dispatch The dispatch function from store.
  * @param {Object} action The action object.
  * @param {String} client The client identifier.
@@ -16,6 +18,8 @@ export function inServerVia(dispatch, action, client) {
 }
 
 /**
+ * Builds a middleware that handles outcoming actions at server side.
+ *
  * @param {Function} cross The function to cross the action out of the server boundary.
  * @returns {Function} A Redux middleware
  */
