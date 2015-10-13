@@ -50,11 +50,10 @@ export function set(meta, key, value) {
 }
 
 /**
- * Sets a meta object property value.
+ * Removes a meta object property value.
  *
  * @param {Object} meta The meta object.
  * @param {String} key The meta property key.
- * @param {any} value The meta property value.
  */
 export function remove(meta, key) {
   if (meta[namespace] === true) {
