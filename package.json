@@ -1,0 +1,43 @@
+{
+  "name": "redux-via",
+  "version": "0.0.0",
+  "description": "Redux via stuff",
+  "main": "lib/index.js",
+  "scripts": {
+    "start": "npm run clean && npm run build 2>/dev/null",
+    "lint": "eslint test src",
+    "build": "npm run lint 2>/dev/null && babel src --out-dir lib",
+    "clean": "rm -rf lib",
+    "prepublish": "npm run test",
+    "test": "npm start 2>/dev/null && npm run test:once",
+    "test:once": "mocha --compilers js:babel/register --recursive",
+    "test:watch": "npm start 2>/dev/null && npm run test:once -- --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rstuven/redux-via.git"
+  },
+  "keywords": [
+    "redux",
+    "via"
+  ],
+  "author": "Ricardo Stuven <rstuven@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/rstuven/redux-via/issues"
+  },
+  "homepage": "https://github.com/rstuven/redux-via#readme",
+  "devDependencies": {
+    "babel": "^5.8.23",
+    "babel-eslint": "^4.1.3",
+    "chai": "^3.2.0",
+    "eslint": "^1.6.0",
+    "eslint-config-airbnb": "^0.1.0",
+    "mocha": "^2.3.2",
+    "sinon": "^1.17.1",
+    "sinon-chai": "^2.8.0"
+  },
+  "dependencies": {
+    "flux-standard-action": "^0.6.0"
+  }
+}
