@@ -31,7 +31,7 @@ export function outServerVia(cross) {
     if (typeof action.meta === 'object') {
       const broadcast = meta.get(action.meta, 'broadcast');
       const client = meta.get(action.meta, 'client');
-      if (typeof broadcast === 'boolean' || typeof client === 'string') {
+      if (broadcast === true || typeof client === 'string') {
         cross(action, broadcast, client);
         const doNext = meta.get(action.meta, 'next');
         if (doNext === false) { // do next by default

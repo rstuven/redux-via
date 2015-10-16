@@ -34,6 +34,14 @@ describe('outServerVia', () => {
     expect(next).to.have.been.calledWith(action);
   });
 
+  it('not broadcast and next', () => {
+    const action = {type, meta: {broadcast: false, next: false}}; // ignore `next` value
+    middleware(action);
+
+    expect(cross).to.have.not.been.called;
+    expect(next).to.have.been.calledWith(action);
+  });
+
   it('broadcast, client and next', () => {
     const action = {type, meta: {broadcast: true, client}};
     middleware(action);
